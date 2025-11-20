@@ -57,7 +57,7 @@ section as you go. DO NOT forget about it!
 What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
 
 ```
-    *c*
+    **Replace this text with your reflection
 ```
 
 ---
