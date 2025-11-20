@@ -57,7 +57,13 @@ section as you go. DO NOT forget about it!
 What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
 
 ```
-    **Replace this text with your reflection
+    **I feel like things are moving in the right direction, even though there were moments where I felt a little behind at 
+    first. The project seemed bigger than I expected, especially once we started breaking it down into classes and seeing 
+    how many parts a platformer actually needs. But now that we have a clearer structure, it feels way more manageable.
+    I’m still a little worried about getting all the pieces working together with turtle, but I’m also starting to feel more 
+    confident because each class is simple on its own. What surprised me most is how much planning matters before writing any code. 
+    Overall, I think I’m catching up and getting more comfortable with the project every step of the way.
+
 ```
 
 ---
