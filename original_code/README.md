@@ -16,7 +16,7 @@ class Game:
         self.running = True
         pygame.init()
         self.screen = pygame.display.set_mode(self.size)
-        self.screen.fill('#9CBEBA')
+        
         self.clock = pygame.time.Clock()
         self.tuna = Player(self.size)
         self.tacocat = Good_NPC(self.size)
