@@ -122,8 +122,6 @@ class Game:
         self.screen.blit(font_primary.render('SCORE', True, "white"), (20, 20))
         self.screen.blit(font_secondary.render(str(self.score), True, "white"), (50, 50))
 
-        self.screen.blit(font_primary.render('LEVEL', True, "white"), (360, 20))
-        self.screen.blit(font_secondary.render(str(self.level), True, "white"), (400, 50))
 
         self.screen.blit(font_primary.render('LIVES', True, "white"), (700, 20))
         self.screen.blit(font_secondary.render(str(self.life), True, "white"), (730, 50))
