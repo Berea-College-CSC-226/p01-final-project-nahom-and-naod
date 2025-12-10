@@ -96,6 +96,7 @@ class Game:
             if self.mario.rect.colliderect(enemy.rect):
 
                 # Mario stomps
+
                 if (
                     self.mario.y_velocity > 0 and
                     self.mario.rect.bottom <= enemy.rect.top + 15
