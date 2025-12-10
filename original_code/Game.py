@@ -67,7 +67,7 @@ class Game:
 
         for _ in range(10):
             group_start_x = start_x + random.randint(150, 300)
-            base_y = random.randint(250, 300)
+            base_y = random.randint(300, 350)
 
             formation = [
                 (0, 0), (1, 0), (2, 0),

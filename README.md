@@ -88,8 +88,8 @@ Indicate what percentage of the project you have left to complete and how confid
   before the deadline.
 
 ```
-    *I feel somewhat confident about completing this project. I understand the basics, but some parts are still challenging. 
-    I believe I can finish it if I stay focused and work step by step.To improve my chances of finishing on time, I will break the project into small tasks,
+    *we feel somewhat confident about completing this project. we understand the basics, but some parts are still challenging. 
+    we believe we can finish it if we stay focused and work step by step.To improve my chances of finishing on time, I will break the project into small tasks,
      work on it a little every day, test my code often, and ask for help when I get stuck.*
 ```
 
