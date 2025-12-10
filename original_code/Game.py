@@ -32,26 +32,25 @@ class Game:
         self.spawn_enemies()
 
         # Flowers
-        self.flower_positions = []
-        self.generate_flowers()
-
-
-
-    def generate_flowers(self):
         self.flowers_images = [
             pygame.image.load("../image/flower0.png"),
             pygame.image.load("../image/flower1.png"),
             pygame.image.load("../image/flower2.png"),
             pygame.image.load("../image/flower3.png")
         ]
+        self.flower_positions = []
+        self.generate_flowers()
 
+
+    def generate_flowers(self):
+        
         self.flower_positions = []
         x = 0
-        y = 510  # straight line height
+        y = 510  # height along ground
 
-        for _ in range(50):  # number of flowers
+        for _ in range(50):
             img = random.choice(self.flowers_images)
-            x += random.randint(80, 200)  # random horizontal spacing
+            x += random.randint(80, 200)
             self.flower_positions.append((img, x, y))
 
 
@@ -82,38 +81,38 @@ class Game:
 
     def spawn_enemies(self):
         self.enemies = []
-        for i in range(10):  # number of enemies
+        for i in range(10):
             x = random.randint(400, 5000)
             y = 480
             enemy = Enemy(x, y)
             self.enemies.append(enemy)
 
 
-
     def mario_enemy_interaction(self):
         for enemy in self.enemies[:]:
             if self.mario.rect.colliderect(enemy.rect):
 
-
+                # Mario stomps
                 if (
-                        self.mario.y_velocity > 0 and
-                        self.mario.rect.bottom <= enemy.rect.top + 15
+                    self.mario.y_velocity > 0 and
+                    self.mario.rect.bottom <= enemy.rect.top + 15
                 ):
-                    self.score += 1*100 # add score
-                    self.mario.y_velocity = -15  # bounce
-                    self.enemies.remove(enemy)  # kill enemy
+                    self.score += 100
+                    self.mario.y_velocity = -15
+                    self.enemies.remove(enemy)
 
+                # Mario gets hurt
                 else:
                     self.life -= 1
                     self.mario.x -= 25
                     self.mario.y -= 25
-                    self.mario.rect.x = self.mario.x
+                    self.mario.rect.topleft = (self.mario.x, self.mario.y)
 
 
     def load_sprite(self):
         self.camera_x = self.mario.x - 100
 
-        # Ground tiles
+        # Ground
         ground = pygame.image.load("../image/floor2.jpg")
         for i in range(30):
             ground_x = (452 * i - self.camera_x) - 100
@@ -143,13 +142,17 @@ class Game:
         # Logo
         super_mario_logo = pygame.image.load("../image/SUPERMARIO_LOGO_BIG.png")
         SML_size = super_mario_logo.get_size()
-        pygame.draw.rect(self.screen,"#FF746C",(30-self.camera_x, 90 ,SML_size[0]+20,SML_size[1]+20),0,20)
+        pygame.draw.rect(self.screen, "#FF746C",
+                         (30 - self.camera_x, 90, SML_size[0] + 20, SML_size[1] + 20),
+                         0, 20)
         self.screen.blit(super_mario_logo, (40 - self.camera_x, 100))
 
+        # Blocks
         for block, rect, block_type in self.block_positions:
             draw_x = rect.x - self.camera_x
             self.screen.blit(block, (draw_x, rect.y))
 
+        # Enemies
         for enemy in self.enemies:
             draw_x = enemy.rect.x - self.camera_x
             self.screen.blit(enemy.image, (draw_x, enemy.rect.y))
@@ -157,11 +160,12 @@ class Game:
         # Mario
         self.screen.blit(self.mario.character, (100, self.mario.y))
 
-        # Debug Mario hitbox # remove at the end
+        # Debug hitbox (remove later)
         pygame.draw.rect(
             self.screen,
             (0, 255, 0),
-            (self.mario.rect.x - self.camera_x, self.mario.rect.y, self.mario.rect.width, self.mario.rect.height),
+            (self.mario.rect.x - self.camera_x, self.mario.rect.y,
+             self.mario.rect.width, self.mario.rect.height),
             2
         )
 
@@ -206,7 +210,10 @@ class Game:
             key = pygame.key.get_pressed()
             self.camera_x = self.mario.x - 100
 
+            # Mario movement
             self.mario.movement(key, self.camera_x)
+
+            # Block collision (+ break coin/normal)
             hit_block = self.mario.collide_with_blocks(self.block_positions)
 
             if hit_block:
@@ -219,11 +226,14 @@ class Game:
                     self.score += 100
                     self.block_positions.remove(hit_block)
 
-            # Enemy updates
+            # Enemies
             for enemy in self.enemies:
                 enemy.update(self.block_positions)
+
+            # Mario vs enemies
             self.mario_enemy_interaction()
 
+            # Check game over
             if self.life <= 0:
                 self.game_over_screen()
                 return
@@ -235,7 +245,6 @@ class Game:
 def main():
     super_mario = Game()
     super_mario.run()
-
 
 if __name__ == "__main__":
     main()
