@@ -227,6 +227,7 @@ class Game:
                 self.game_over_screen()
                 return
 
+
             pygame.display.update()
             self.clock.tick(24)
 
