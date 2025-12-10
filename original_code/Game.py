@@ -95,14 +95,9 @@ class Game:
             y = 480
             enemy = Enemy(x, y)
             self.enemies.append(enemy)
-
-
     def mario_enemy_interaction(self):
         for enemy in self.enemies[:]:
             if self.mario.rect.colliderect(enemy.rect):
-
-                # Mario stomps
-
                 if (
                     self.mario.y_velocity > 0 and
                     self.mario.rect.bottom <= enemy.rect.top + 15
@@ -177,17 +172,13 @@ class Game:
         # Mario
         self.screen.blit(self.mario.character, (100, self.mario.y))
 
-        # Debug hitbox (remove later)
-        # pygame.draw.rect(
-        #     self.screen,
-        #     (0, 255, 0),
-        #     (self.mario.rect.x - self.camera_x, self.mario.rect.y,
-        #      self.mario.rect.width, self.mario.rect.height),
-        #     2
-        # )
-
-
-
+        # Debug Mario hitbox # remove at the end
+        pygame.draw.rect(
+            self.screen,
+            (0, 255, 0),
+            (self.mario.rect.x - self.camera_x, self.mario.rect.y, self.mario.rect.width, self.mario.rect.height),
+            2
+        )
     def game_over_screen(self):
         font = pygame.font.SysFont('../fonts/SuperMario256.ttf', 70)
         font_score = pygame.font.SysFont('../fonts/SuperMario256.ttf', 35)
