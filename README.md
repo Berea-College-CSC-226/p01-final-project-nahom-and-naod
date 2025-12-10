@@ -2,24 +2,24 @@
 
 ## Instructions
 
-
-Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
+❗️Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
   they accompany. (This means that your final README should have no ❗️in it!)
-️**Author(s)**: Nahom Terrefe and Naod Ksmu
 
-️**Google Doc Link**: https://docs.google.com/document/d/1c5iFrh-c3z9K5B_EGnLQzz5f1H1ZO61oGB9eO4YOZB8/edit?usp=sharing
+❗️**Author(s)**: Naod Ksmu
+
+❗️**Google Doc Link**: https://docs.google.com/document/d/1c5iFrh-c3z9K5B_EGnLQzz5f1H1ZO61oGB9eO4YOZB8/edit?usp=sharing
 
 ---
 
 ## Milestone 1: Setup, Planning, Design
 
-**Title**: `Clone of Super Mario`
+❗️**Title**: "Clone of Super mario."
 
-**Purpose**: `We will try to replicate the game design and and graphics of Super Mario`
+❗**Purpose**:"To create game like Super Mario, with player movement, enemies, collectibles, and levels, while practicing OOP, game design, and teamwork."
 
-**Source Assignment(s)**: `T11: The Legend of Tuna: Breath of Catnip`
+❗️**Source Assignment(s)**: `Team work 11 : The lengend of Tuna`
 
-**CRC Card(s)**:
+❗️**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
   - See this link for a sample CRC card and a template to use for your own cards (you will have to make a copy to edit):
     [CRC Card Example](https://docs.google.com/document/d/1JE_3Qmytk_JGztRqkPXWACJwciPH61VCx3idIlBCVFY/edit?usp=sharing)
@@ -27,25 +27,22 @@ Exclamation Marks ❗️indicate action items; you should remove these emoji as 
     README. You can do this by saving an image in the repository and linking to it. See the sample CRC card below - 
     and REPLACE it with your own:
   
-![Don't leave me in your README!](image/img_1.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
-![Don't leave me in your README!](image/img_2.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
-![Don't leave me in your README!](image/img_3.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
-![Don't leave me in your README!](image/img_4.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
+![Don't leave me in your README!](image/png.jpg "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
 
-**Branches**: This project will **require** effective use of git. 
+❗️**Branches**: This project will **require** effective use of git. 
 
-Each partner should create a branch at the beginning of the project, and stay on this branch (or branches of their 
-branch) as**** they work. When you need to bring each others branches together, do so by merging each other's branches 
+❗Each partner should create a branch at the beginning of the project, and stay on this branch (or branches of their 
+branch) as they work. When you need to bring each others branches together, do so by merging each other's branches 
 into your own, following the process we've discussed in previous assignments, then re-branching out from the merged code.  
 
 ```
-    Branch 1 starting name: terrefen
-    Branch 2 starting name: ksmun
+    Branch 1 starting name: Ksmun_____________
+    Branch 2 starting name: Terrefen_____________
 ```
 
 ### References 
 
-Throughout this project, you will likely use outside resources. Reference all ideas which are not your own, 
+❗Throughout this project, you will likely use outside resources. Reference all ideas which are not your own, 
 and describe how you integrated the ideas or code into your program. This includes online sources, people who have 
 helped you, AI tools you've used, and any other resources that are not solely your own contribution. Update this 
 section as you go. DO NOT forget about it!
@@ -54,35 +51,35 @@ section as you go. DO NOT forget about it!
 
 ## Milestone 2: Code Setup and Issue Queue
 
-Most importantly, keep your issue queue up to date, and focus on your code. 🙃
+❗Most importantly, keep your issue queue up to date, and focus on your code. 🙃
 
-Reflect on what you’ve done so far. How’s it going? Are you feeling behind/ahead? What are you worried about? 
+❗Reflect on what you’ve done so far. How’s it going? Are you feeling behind/ahead? What are you worried about? 
 What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
 
 ```
-    **I feel like things are moving in the right direction, even though there were moments where I felt a little behind at 
-    first. The project seemed bigger than I expected, especially once we started breaking it down into classes and seeing 
-    how many parts a platformer actually needs. But now that we have a clearer structure, it feels way more manageable.
-    I’m still a little worried about getting all the pieces working together with turtle, but I’m also starting to feel more 
-    confident because each class is simple on its own. What surprised me most is how much planning matters before writing any code. 
-    Overall, I think I’m catching up and getting more comfortable with the project every step of the way.
-
+**So far, the project has been a learning experience. I feel somewhere between on track and slightly behind, mainly because certain tasks took longer than expected.
+ The setup phase surprised me,I didn’t think small configuration issues would take as much time as they did. I’ve also realized the importance of writing cleaner,
+ more organized code early on to avoid confusion later.Emoionally, I feel a mix of motivation and a bit of pressure, but in a good way. 
+ I’m becoming more comfortable with debugging and planning my work. My main worries right now are staying consistent with updates and managing time effectively, 
+ but overall, I believe I can catch up fully if I stay focused.
 ```
 
 ---
 
 ## Milestone 3: Virtual Check-In
 
-Indicate what percentage of the project you have left to complete and how confident you feel. 
+❗Indicate what percentage of the project you have left to complete and how confident you feel. 
 
-**Completion Percentage**: `35`
+❗️**Completion Percentage**: `40%`
 
-**Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some 
+❗️**Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some 
   strategies you can employ to increase the likelihood that you'll be successful in completing this project 
   before the deadline.
 
 ```
-    **We can get it in time since we have figured out how the screen moves and games logic. 
+    *I feel somewhat confident about completing this project. I understand the basics, but some parts are still challenging. 
+    I believe I can finish it if I stay focused and work step by step.To improve my chances of finishing on time, I will break the project into small tasks,
+     work on it a little every day, test my code often, and ask for help when I get stuck.*
 ```
 
 ---
