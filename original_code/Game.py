@@ -36,9 +36,7 @@ class Game:
         self.generate_flowers()
 
 
-    # -------------------------------
-    #  RANDOM FLOWER GENERATION
-    # -------------------------------
+
     def generate_flowers(self):
         self.flowers_images = [
             pygame.image.load("../image/flower0.png"),
@@ -57,9 +55,7 @@ class Game:
             self.flower_positions.append((img, x, y))
 
 
-    # -------------------------------
-    #  RANDOM BLOCK GENERATION
-    # -------------------------------
+
     def generate_blocks(self):
         self.block_positions = []
 
@@ -84,10 +80,6 @@ class Game:
 
             start_x = group_start_x + 600
 
-
-    # -------------------------------
-    #  SPAWN ENEMIES
-    # -------------------------------
     def spawn_enemies(self):
         self.enemies = []
         for i in range(10):  # number of enemies
@@ -97,9 +89,7 @@ class Game:
             self.enemies.append(enemy)
 
 
-    # -------------------------------
-    #  MARIO & ENEMY INTERACTION
-    # -------------------------------
+
     def mario_enemy_interaction(self):
         for enemy in self.enemies[:]:
             if self.mario.rect.colliderect(enemy.rect):
@@ -120,9 +110,6 @@ class Game:
                     self.mario.rect.x = self.mario.x
 
 
-    # -------------------------------
-    #  DRAW SPRITES
-    # -------------------------------
     def load_sprite(self):
         self.camera_x = self.mario.x - 100
 
@@ -179,9 +166,6 @@ class Game:
         )
 
 
-    # -------------------------------
-    #  GAME OVER SCREEN
-    # -------------------------------
     def game_over_screen(self):
         font = pygame.font.SysFont('../fonts/SuperMario256.ttf', 70)
         font_score = pygame.font.SysFont('../fonts/SuperMario256.ttf', 35)
@@ -208,9 +192,7 @@ class Game:
             self.clock.tick(10)
 
 
-    # -------------------------------
-    #  GAME LOOP
-    # -------------------------------
+
     def run(self):
         while self.is_running:
             for event in pygame.event.get():
