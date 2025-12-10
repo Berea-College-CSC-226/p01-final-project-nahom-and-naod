@@ -9,9 +9,9 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
             super().__init__()
             # Create a visual rectangle for the player
-            self.surf = pygame.Surface((40, 50))    #
-            self.surf.fill(RED)                     #
-            self.rect = self.surf.get_rect(midbottom=(100, HEIGHT - 50))   #
+            self.surf = pygame.Surface((40, 50))
+            self.surf.fill(RED)
+            self.rect = self.surf.get_rect(midbottom=(100, HEIGHT - 50))
 
             self.vel_y = 0         # Vertical speed (used for jumping and gravity)
             self.speed = 5         # Horizontal speed (left/right movement)

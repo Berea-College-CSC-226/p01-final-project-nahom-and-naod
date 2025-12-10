@@ -59,26 +59,34 @@ class Game:
     def generate_blocks(self):
         self.block_positions = []
 
-        block_width = 45
-        num_groups = 10
         start_x = 300
+        block_width = 45
 
-        for _ in range(num_groups):
-            rand_normal = random.randint(2, 4)
-            rand_coins = random.randint(0, 1)
-            group = self.blocks.create_blocks(rand_normal, rand_coins)
+        for _ in range(10):  # number of pyramid groups
+            group_start_x = start_x + random.randint(150, 300)
+            base_y = random.randint(300, 400)
 
-            random.shuffle(group)
-            group_start_x = start_x + random.randint(200, 300)
+            formation = [
+                (0, 0), (1, 0), (2, 0),  # Top row
+                (6, 1), (7, 1), (8, 1),  # Bottom-right row
+            ]
+            for (dx, dy) in formation:
+                x = group_start_x + dx * block_width
+                y = base_y + dy * 40
 
-            for i, block in enumerate(group):
-                x = group_start_x + i * block_width
-                y = 390
-                rect = block.get_rect(topleft=(x, y))
-                block_type = "coin" if block == self.blocks.coin_block else "normal"
-                self.block_positions.append([block, rect, block_type])
+                # random block type
+                if random.random() < 0.25:
+                    img = self.blocks.coin_block
+                    block_type = "coin"
+                else:
+                    img = self.blocks.normal_block
+                    block_type = "normal"
 
-            start_x = group_start_x + 600
+                rect = img.get_rect(topleft=(x, y))
+                self.block_positions.append([img, rect, block_type])
+
+            # move forward for next structure
+            start_x = group_start_x + random.randint(400, 600)
 
     def spawn_enemies(self):
         self.enemies = []
@@ -87,14 +95,9 @@ class Game:
             y = 480
             enemy = Enemy(x, y)
             self.enemies.append(enemy)
-
-
-
     def mario_enemy_interaction(self):
         for enemy in self.enemies[:]:
             if self.mario.rect.colliderect(enemy.rect):
-
-
                 if (
                         self.mario.y_velocity > 0 and
                         self.mario.rect.bottom <= enemy.rect.top + 15
@@ -164,8 +167,6 @@ class Game:
             (self.mario.rect.x - self.camera_x, self.mario.rect.y, self.mario.rect.width, self.mario.rect.height),
             2
         )
-
-
     def game_over_screen(self):
         font = pygame.font.SysFont('../fonts/SuperMario256.ttf', 70)
         font_score = pygame.font.SysFont('../fonts/SuperMario256.ttf', 35)
@@ -190,8 +191,6 @@ class Game:
             self.screen.blit(text_score, text_score_rect)
             pygame.display.update()
             self.clock.tick(10)
-
-
 
     def run(self):
         while self.is_running:
