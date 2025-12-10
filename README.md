@@ -2,10 +2,10 @@
 
 ## Instructions
 
-Exclamation Marks  ️indicate action items; you should remove these emoji as you complete/update the items which 
+Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
   they accompany. (This means that your final README should have no ❗️in it!)
 
-**Author(s)**: Naod Ksmu
+**Author(s)**: Nahom Mesfin
 
 **Google Doc Link**: https://docs.google.com/document/d/1c5iFrh-c3z9K5B_EGnLQzz5f1H1ZO61oGB9eO4YOZB8/edit?usp=sharing
 
@@ -17,7 +17,7 @@ Exclamation Marks  ️indicate action items; you should remove these emoji as yo
 
 **Purpose**:"To create game like Super Mario, with player movement, enemies, collectibles, and levels, while practicing OOP, game design, and teamwork."
 
-**Source Assignment(s)**: `Team work 11 : The lengend of Tuna`
+**Source Assignment(s)**: `Team work 11 : The Legend of Tuna`
 
 **CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
@@ -27,7 +27,11 @@ Exclamation Marks  ️indicate action items; you should remove these emoji as yo
     README. You can do this by saving an image in the repository and linking to it. See the sample CRC card below - 
     and REPLACE it with your own:
   
-![Don't leave me in your README!](image/png.jpg "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
+![Don't leave me in your README!](image/img_1.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
+![Don't leave me in your README!](image/img_2.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
+![Don't leave me in your README!](image/img_3.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
+![Don't leave me in your README!](image/img_4.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
+
 
 **Branches**: This project will **require** effective use of git. 
 
@@ -47,13 +51,20 @@ and describe how you integrated the ideas or code into your program. This includ
 helped you, AI tools you've used, and any other resources that are not solely your own contribution. Update this 
 section as you go. DO NOT forget about it!
 
+
+We have used Chatgpt 
+-> To help up with game logic especially cameral logic where the character stays the same place and other world things move. 
+-> To deal with gravity logic when mario jumps, that was confusing to implement hence it helped
+https://www.pygame.org/docs/ Pygame documentation to understand the most of the methods  
+https://supermarioplay.com/fullscreen supermario game for reference, it helped us see what we are working with and understand how to clone it better
+
 ---
 
 ## Milestone 2: Code Setup and Issue Queue
 
-Most importantly, keep your issue queue up to date, and focus on your code. 🙃
+ Most importantly, keep your issue queue up to date, and focus on your code. 🙃
 
-Reflect on what you’ve done so far. How’s it going? Are you feeling behind/ahead? What are you worried about? 
+ Reflect on what you’ve done so far. How’s it going? Are you feeling behind/ahead? What are you worried about? 
 What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
 
 ```

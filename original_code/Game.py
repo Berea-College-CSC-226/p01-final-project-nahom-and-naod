@@ -7,8 +7,10 @@ from enemy import Enemy
 from Princess import Princess
 
 class Game:
+    """Main game controller. Handles world setup, updates, and rendering."""
 
     def __init__(self):
+        """Create game window and load all starting objects."""
         pygame.init()
         self.size = 800, 600
         self.screen = pygame.display.set_mode(self.size)
@@ -42,14 +44,14 @@ class Game:
         self.flower_positions = []
         self.generate_flowers()
 
-
+        # Princess
         self.princess = Princess(8450, 400)
 
     def generate_flowers(self):
-
+        """Create random decorative flowers along the ground."""
         self.flower_positions = []
         x = 0
-        y = 510  # height along ground
+        y = 510
 
         for _ in range(100):
             img = random.choice(self.flowers_images)
@@ -57,24 +59,25 @@ class Game:
             self.flower_positions.append((img, x, y))
 
     def generate_blocks(self):
+        """Build block formations and store their images and hitboxes."""
         self.block_positions = []
 
         start_x = 300
         block_width = 45
 
-        for _ in range(10):  # number of pyramid groups
+        for _ in range(10):
             group_start_x = start_x + random.randint(150, 300)
             base_y = random.randint(250, 300)
 
             formation = [
-                (0, 0), (1, 0), (2, 0),  # Top row
-                (6, 1), (7, 1), (8, 1),  # Bottom-right row
+                (0, 0), (1, 0), (2, 0),
+                (6, 1), (7, 1), (8, 1),
             ]
+
             for (dx, dy) in formation:
                 x = group_start_x + dx * block_width
                 y = base_y + dy * 40
 
-                # random block type
                 if random.random() < 0.25:
                     img = self.blocks.coin_block
                     block_type = "coin"
@@ -85,19 +88,22 @@ class Game:
                 rect = img.get_rect(topleft=(x, y))
                 self.block_positions.append([img, rect, block_type])
 
-            # move forward for next structure
             start_x = group_start_x + random.randint(400, 600)
 
     def spawn_enemies(self):
+        """Place enemies randomly through the level."""
         self.enemies = []
-        for i in range(10):
+        for _ in range(10):
             x = random.randint(400, 5000)
             y = 480
-            enemy = Enemy(x, y)
-            self.enemies.append(enemy)
+            self.enemies.append(Enemy(x, y))
+
     def mario_enemy_interaction(self):
+        """Check Mario touching enemies and apply stomp or damage."""
         for enemy in self.enemies[:]:
             if self.mario.rect.colliderect(enemy.rect):
+
+                # Mario stomps
                 if (
                     self.mario.y_velocity > 0 and
                     self.mario.rect.bottom <= enemy.rect.top + 15
@@ -106,9 +112,7 @@ class Game:
                     self.mario.y_velocity = -15
                     self.enemies.remove(enemy)
 
-                # Mario gets hurt
                 else:
-                    # Mario got hit (SIDE or BOTTOM)
                     self.life -= 1
                     if self.mario.rect.centerx < enemy.rect.centerx:
                         self.mario.x -= 35
@@ -118,6 +122,7 @@ class Game:
                     self.mario.rect.topleft = (self.mario.x, self.mario.y)
 
     def load_sprite(self):
+        """Draw world elements based on camera position."""
         self.camera_x = self.mario.x - 100
 
         # Ground
@@ -165,21 +170,15 @@ class Game:
             draw_x = enemy.rect.x - self.camera_x
             self.screen.blit(enemy.image, (draw_x, enemy.rect.y))
 
-        # Draw Princess
+        # Princess
         draw_x = self.princess.rect.x - self.camera_x
         self.screen.blit(self.princess.image, (draw_x, self.princess.rect.y))
 
         # Mario
         self.screen.blit(self.mario.character, (100, self.mario.y))
 
-        # Debug Mario hitbox # remove at the end
-        pygame.draw.rect(
-            self.screen,
-            (0, 255, 0),
-            (self.mario.rect.x - self.camera_x, self.mario.rect.y, self.mario.rect.width, self.mario.rect.height),
-            2
-        )
     def game_over_screen(self):
+        """Show GAME OVER screen and final score."""
         font = pygame.font.SysFont('../fonts/SuperMario256.ttf', 70)
         font_score = pygame.font.SysFont('../fonts/SuperMario256.ttf', 35)
 
@@ -205,6 +204,7 @@ class Game:
             self.clock.tick(10)
 
     def win_screen(self):
+        """Show YOU WIN screen when Mario touches the Princess."""
         font = pygame.font.SysFont('../fonts/SuperMario256.ttf', 70)
         font_small = pygame.font.SysFont('../fonts/SuperMario256.ttf', 35)
 
@@ -236,13 +236,13 @@ class Game:
             self.clock.tick(10)
 
     def run(self):
+        """Main game loop. Updates world and checks win/lose states."""
         while self.is_running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.is_running = False
 
             self.screen.fill('#4067B0')
-
             self.load_sprite()
 
             key = pygame.key.get_pressed()
@@ -251,17 +251,13 @@ class Game:
             # Mario movement
             self.mario.movement(key, self.camera_x)
 
-            # Block collision (+ break coin/normal)
+            # Block interaction
             hit_block = self.mario.collide_with_blocks(self.block_positions)
-
             if hit_block:
                 img, rect, block_type = hit_block
-
-                if block_type == "normal":
-                    self.block_positions.remove(hit_block)
-
-                elif block_type == "coin":
-                    self.score += 100
+                if block_type in ("normal", "coin"):
+                    if block_type == "coin":
+                        self.score += 100
                     self.block_positions.remove(hit_block)
 
             # Enemies
@@ -276,7 +272,7 @@ class Game:
                 self.game_over_screen()
                 return
 
-            # Check win condition
+            # Check win
             if self.mario.rect.colliderect(self.princess.rect):
                 self.win_screen()
                 return
@@ -284,8 +280,8 @@ class Game:
             pygame.display.update()
             self.clock.tick(24)
 
-
 def main():
+    """Start the super mariogame."""
     super_mario = Game()
     super_mario.run()
 
