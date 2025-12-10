@@ -1,7 +1,12 @@
 import pygame
 
 class Enemy(pygame.sprite.Sprite):
+    """
+    A simple enemy that moves left and right, falls with gravity,
+        and turns around when hitting walls or blocks.
+        """
     def __init__(self, x, y):
+        """Apply gravity and move the enemy downward."""
         super().__init__()
 
         self.image = pygame.image.load("../image/goombas.png")
@@ -18,13 +23,16 @@ class Enemy(pygame.sprite.Sprite):
         self.world_right = 5000
 
     def apply_gravity(self):
+        """Apply gravity and move the enemy downward."""
         self.y_velocity += self.gravity
         self.rect.y += self.y_velocity
 
     def move(self):
+        """Move the enemy horizontally based on direction and speed."""
         self.rect.x += self.direction * self.speed
 
     def update(self, blocks):
+        """Update movement, gravity, collisions, and boundaries."""
         # movement + gravity
         self.move()
         self.apply_gravity()
