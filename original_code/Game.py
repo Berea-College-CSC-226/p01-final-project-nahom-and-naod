@@ -53,7 +53,8 @@ class Game:
                 x = group_start_x + i * block_width
                 y = 390
                 rect = block.get_rect(topleft=(x, y))
-                self.block_positions.append((block, rect))
+                block_type = "coin" if block == self.blocks.coin_block else "normal"
+                self.block_positions.append([block, rect, block_type])
 
             start_x = group_start_x + 600
 
@@ -71,7 +72,7 @@ class Game:
         for enemy in self.enemies[:]:
             if self.mario.rect.colliderect(enemy.rect):
 
-                # --- 1. MARIO STOMPS ENEMY (TOP HIT) ---
+
                 if (
                         self.mario.y_velocity > 0 and
                         self.mario.rect.bottom <= enemy.rect.top + 15
@@ -80,11 +81,11 @@ class Game:
                     self.mario.y_velocity = -15  # bounce
                     self.enemies.remove(enemy)  # kill enemy
 
-                # --- 2. MARIO HIT FROM SIDE OR BOTTOM ---
                 else:
                     self.life -= 1
                     # Knock Mario back a bit
                     self.mario.x -= 25
+                    self.mario.y -= 25
                     self.mario.rect.x = self.mario.x
 
     def load_sprite(self):
@@ -132,11 +133,9 @@ class Game:
         pygame.draw.rect(self.screen,"#FF746C",(30-self.camera_x, 90 ,SML_size[0]+20,SML_size[1]+20),0,20)
         self.screen.blit(super_mario_logo, (40 - self.camera_x, 100))
 
-
-        for block, rect in self.block_positions:
+        for block, rect, block_type in self.block_positions:
             draw_x = rect.x - self.camera_x
             self.screen.blit(block, (draw_x, rect.y))
-
 
         for enemy in self.enemies:
             draw_x = enemy.rect.x - self.camera_x
@@ -145,7 +144,7 @@ class Game:
 
         self.screen.blit(self.mario.character, (100, self.mario.y))
 
-        # Debug Mario hitbox
+        # Debug Mario hitbox # remove at the end
         pygame.draw.rect(
             self.screen,
             (0, 255, 0),
@@ -195,7 +194,17 @@ class Game:
 
 
             self.mario.movement(key, self.camera_x)
-            self.mario.collide_with_blocks(self.block_positions)
+            hit_block = self.mario.collide_with_blocks(self.block_positions)
+
+            if hit_block:
+                img, rect, block_type = hit_block
+
+                if block_type == "normal":
+                    self.block_positions.remove(hit_block)
+
+                elif block_type == "coin":
+                    self.score += 100
+                    self.block_positions.remove(hit_block)
 
             # Enemy updates
             for enemy in self.enemies:
