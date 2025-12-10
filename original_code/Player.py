@@ -10,7 +10,7 @@ class Player(pygame.sprite.Sprite):
         self.character = pygame.image.load("../image/mario_4.png")
         self.rect = self.character.get_rect(topleft=(self.x, self.y))
 
-        self.speed = 10
+        self.speed = 12
         self.x_velocity = 0
 
         self.y_velocity = 0
@@ -23,7 +23,7 @@ class Player(pygame.sprite.Sprite):
 
         self.x_velocity = 0
 
-        if key[pygame.K_RIGHT] and camera_pos < 5000:
+        if key[pygame.K_RIGHT] and camera_pos < 8350:
             self.x_velocity += self.speed
 
         if key[pygame.K_LEFT] and camera_pos > 0:

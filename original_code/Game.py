@@ -4,6 +4,7 @@ import random
 from Player import Player
 from Blocks import Blocks
 from enemy import Enemy
+from Princess import Princess
 
 class Game:
 
@@ -42,13 +43,15 @@ class Game:
         self.generate_flowers()
 
 
+        self.princess = Princess(8450, 400)
+
     def generate_flowers(self):
-        
+
         self.flower_positions = []
         x = 0
         y = 510  # height along ground
 
-        for _ in range(50):
+        for _ in range(100):
             img = random.choice(self.flowers_images)
             x += random.randint(80, 200)
             self.flower_positions.append((img, x, y))
@@ -103,11 +106,14 @@ class Game:
 
                 # Mario gets hurt
                 else:
+                    # Mario got hit (SIDE or BOTTOM)
                     self.life -= 1
-                    self.mario.x -= 25
-                    self.mario.y -= 25
-                    self.mario.rect.topleft = (self.mario.x, self.mario.y)
+                    if self.mario.rect.centerx < enemy.rect.centerx:
+                        self.mario.x -= 35
+                    else:
+                        self.mario.x += 35
 
+                    self.mario.rect.topleft = (self.mario.x, self.mario.y)
 
     def load_sprite(self):
         self.camera_x = self.mario.x - 100
@@ -157,17 +163,22 @@ class Game:
             draw_x = enemy.rect.x - self.camera_x
             self.screen.blit(enemy.image, (draw_x, enemy.rect.y))
 
+        # Draw Princess
+        draw_x = self.princess.rect.x - self.camera_x
+        self.screen.blit(self.princess.image, (draw_x, self.princess.rect.y))
+
         # Mario
         self.screen.blit(self.mario.character, (100, self.mario.y))
 
         # Debug hitbox (remove later)
-        pygame.draw.rect(
-            self.screen,
-            (0, 255, 0),
-            (self.mario.rect.x - self.camera_x, self.mario.rect.y,
-             self.mario.rect.width, self.mario.rect.height),
-            2
-        )
+        # pygame.draw.rect(
+        #     self.screen,
+        #     (0, 255, 0),
+        #     (self.mario.rect.x - self.camera_x, self.mario.rect.y,
+        #      self.mario.rect.width, self.mario.rect.height),
+        #     2
+        # )
+
 
 
     def game_over_screen(self):
@@ -195,7 +206,36 @@ class Game:
             pygame.display.update()
             self.clock.tick(10)
 
+    def win_screen(self):
+        font = pygame.font.SysFont('../fonts/SuperMario256.ttf', 70)
+        font_small = pygame.font.SysFont('../fonts/SuperMario256.ttf', 35)
 
+        text = font.render("YOU WIN!", True, (255, 215, 0))
+        text_rect = text.get_rect(center=(self.size[0] // 2, self.size[1] // 2))
+
+        text2 = font_small.render("You saved the Princess!", True, (255, 255, 255))
+        text2_rect = text2.get_rect()
+        text2_rect.centerx = text_rect.centerx
+        text2_rect.top = text_rect.bottom + 20
+
+        text3 = font_small.render(f"SCORE {self.score}", True, (255, 255, 255))
+        text3_rect = text3.get_rect()
+        text3_rect.centerx = text2_rect.centerx
+        text3_rect.top = text2_rect.bottom + 20
+
+        waiting = True
+        while waiting:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    waiting = False
+                    self.is_running = False
+
+            self.screen.fill((0, 0, 0))
+            self.screen.blit(text, text_rect)
+            self.screen.blit(text2, text2_rect)
+            self.screen.blit(text3, text3_rect)
+            pygame.display.update()
+            self.clock.tick(10)
 
     def run(self):
         while self.is_running:
@@ -236,6 +276,11 @@ class Game:
             # Check game over
             if self.life <= 0:
                 self.game_over_screen()
+                return
+
+            # Check win condition
+            if self.mario.rect.colliderect(self.princess.rect):
+                self.win_screen()
                 return
 
             pygame.display.update()
