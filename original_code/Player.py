@@ -48,26 +48,31 @@ class Player(pygame.sprite.Sprite):
         self.rect.topleft = (self.x, self.y)
 
     def collide_with_blocks(self, blocks):
-        for block_img, rect in blocks:
+        hit_from_below = None
 
+        for block_img, rect, block_type in blocks:
             if self.rect.colliderect(rect):
 
-
+                # LANDING ON TOP
                 if self.y_velocity > 0 and self.rect.bottom > rect.top:
                     self.rect.bottom = rect.top
                     self.y_velocity = 0
                     self.on_ground = True
 
-
-                elif self.y_velocity < 0 and self.rect.top < rect.bottom:
+                # HIT FROM BELOW
+                elif self.y_velocity < 0 and self.rect.top <= rect.bottom:
                     self.rect.top = rect.bottom
                     self.y_velocity = 0
+                    hit_from_below = [block_img, rect, block_type]  # <-- FIX
 
-
+                # HORIZONTAL COLLISION
                 elif self.x_velocity > 0:
                     self.rect.right = rect.left
 
                 elif self.x_velocity < 0:
                     self.rect.left = rect.right
 
+        # update player coords
         self.x, self.y = self.rect.topleft
+
+        return hit_from_below

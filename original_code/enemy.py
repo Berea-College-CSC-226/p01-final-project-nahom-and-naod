@@ -14,7 +14,6 @@ class Enemy(pygame.sprite.Sprite):
         self.gravity = 1
         self.on_ground = False
 
-
         self.world_left = 0
         self.world_right = 5000
 
@@ -27,8 +26,10 @@ class Enemy(pygame.sprite.Sprite):
 
     def update(self, blocks):
 
+
         self.move()
         self.apply_gravity()
+
         if self.rect.x <= self.world_left:
             self.rect.x = self.world_left
             self.direction = 1
@@ -38,9 +39,8 @@ class Enemy(pygame.sprite.Sprite):
             self.direction = -1
 
 
-        for block_img, rect in blocks:
+        for block_img, rect, block_type in blocks:
             if self.rect.colliderect(rect):
-
 
                 if self.direction > 0 and self.rect.right > rect.left:
                     self.rect.right = rect.left
@@ -50,7 +50,6 @@ class Enemy(pygame.sprite.Sprite):
                     self.rect.left = rect.right
                     self.direction = 1
 
-        #
         if self.rect.bottom >= 480:
             self.rect.bottom = 540
             self.y_velocity = 0
