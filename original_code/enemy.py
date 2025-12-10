@@ -25,11 +25,11 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.x += self.direction * self.speed
 
     def update(self, blocks):
-
-
+        # movement + gravity
         self.move()
         self.apply_gravity()
 
+        # world boundaries
         if self.rect.x <= self.world_left:
             self.rect.x = self.world_left
             self.direction = 1
@@ -38,7 +38,7 @@ class Enemy(pygame.sprite.Sprite):
             self.rect.x = self.world_right
             self.direction = -1
 
-
+        # collide with blocks sideways (to turn around)
         for block_img, rect, block_type in blocks:
             if self.rect.colliderect(rect):
 
@@ -50,6 +50,7 @@ class Enemy(pygame.sprite.Sprite):
                     self.rect.left = rect.right
                     self.direction = 1
 
+        # ground
         if self.rect.bottom >= 480:
             self.rect.bottom = 540
             self.y_velocity = 0
