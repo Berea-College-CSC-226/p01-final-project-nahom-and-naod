@@ -64,7 +64,7 @@ class Game:
 
         for _ in range(10):  # number of pyramid groups
             group_start_x = start_x + random.randint(150, 300)
-            base_y = random.randint(300, 400)
+            base_y = random.randint(250, 300)
 
             formation = [
                 (0, 0), (1, 0), (2, 0),  # Top row
