@@ -1,7 +1,11 @@
 import pygame
 
 class Player(pygame.sprite.Sprite):
+    """
+       A player character that moves, jumps, and collides with blocks in a 2D platformer.
+    """
     def __init__(self):
+        """Initialize player position, image, movement, and gravity."""
         super().__init__()
 
         self.x = 100
@@ -20,7 +24,7 @@ class Player(pygame.sprite.Sprite):
         self.on_ground = True
 
     def movement(self, key, camera_pos):
-
+        """Handle movement, jumping, gravity, and update position."""
         self.x_velocity = 0
 
         if key[pygame.K_RIGHT] and camera_pos < 8350:
@@ -49,7 +53,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.topleft = (self.x, self.y)
 
     def collide_with_blocks(self, blocks):
-
+        """Handle collisions with blocks and return block hit from below."""
         hit_from_below = None
 
         for block in blocks:
