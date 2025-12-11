@@ -2,10 +2,7 @@
 
 ## Instructions
 
-Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
-  they accompany. (This means that your final README should have no ❗️in it!)
-
-**Author(s)**: Nahom Mesfin
+**Author(s)**: Nahom Mesfin and Naod Ksmu
 
 **Google Doc Link**: https://docs.google.com/document/d/1c5iFrh-c3z9K5B_EGnLQzz5f1H1ZO61oGB9eO4YOZB8/edit?usp=sharing
 
@@ -62,8 +59,6 @@ https://supermarioplay.com/fullscreen supermario game for reference, it helped u
 
 ## Milestone 2: Code Setup and Issue Queue
 
- Most importantly, keep your issue queue up to date, and focus on your code. 🙃
-
  Reflect on what you’ve done so far. How’s it going? Are you feeling behind/ahead? What are you worried about? 
 What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
 
@@ -101,6 +96,14 @@ Indicate what percentage of the project you have left to complete and how confid
 
 In a paragraph, explain how to use your program. Assume the user is starting just after they hit the "Run" button 
 in PyCharm.
+```
+*** After you hit “Run” in PyCharm, the game window opens and the gameplay starts right away. 
+Use the left and right arrow keys to move Mario and press the space bar to jump across blocks and avoid enemies.
+Keep moving forward through the level, collecting points and surviving obstacles. 
+When you reach the end of the map, you will find a queen waiting for you to complete the level.
+Close the window anytime to exit and rerun the program to start over. ***
+```
+
 
 ### Errors and Constraints
 Every program has bugs or features that had to be scrapped for time. These bugs should be tracked in the issue queue. 
@@ -118,7 +121,23 @@ Each partner should write three to four well-written paragraphs address the foll
 - How well did you work with your partner? What made it go well? What made it challenging?
 
 ```
-  Partner 1: **
+  Partner 1: *We chose this project because we both like games, and making a Mario-style platformer seemed fun and challenging at the same time.
+              We wanted to build something creative, not just a basic program, and this project gave us a chance to work with movement, collisions, and game design. 
+              From the start, we liked the idea of having blocks, enemies, scoring, and all the classic Mario elements, so this felt like the right choice. 
+             
+              Our final project was close to what we originally planned, but it definitely changed as we worked on it. We added more random block structures, 
+              fixed enemy interactions, and made the world feel more alive with flowers and clouds.
+              Some things were harder than expected, so we adjusted the design along the way. Even though it wasn’t exactly like our first draft, 
+              I think it ended up better than what we imagined.
+              
+              I learned a lot from this process, especially about debugging and how important it is to test things step by step.
+              I also learned more about Pygame and how sprites, camera movement, and collisions really work.  
+              The hardest part for me was getting the blocks and enemies to act correctly, especially when we made them random.
+              Sometimes fixing one bug created another, so that took patience.
+              
+              If I could do this again, I would plan the code structure better from the beginning. That would have made things easier later on. Overall, I think we worked well together.
+              We communicated, helped each other when something broke, and divided the tasks in a fair way. The only challenge was when one change affected the whole game, but we handled it. 
+              In the end, working together is what helped us finish strong.*
 ```
 
 ```
