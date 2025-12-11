@@ -37,8 +37,8 @@ branch) as they work. When you need to bring each others branches together, do s
 into your own, following the process we've discussed in previous assignments, then re-branching out from the merged code.  
 
 ```
-    Branch 1 starting name: Ksmun_____________
-    Branch 2 starting name: Terrefen_____________
+    Branch 1 starting name: Ksmun
+    Branch 2 starting name: Terrefen
 ```
 
 ### References 
@@ -53,7 +53,7 @@ We have used Chatgpt
 -> To help up with game logic especially cameral logic where the character stays the same place and other world things move. 
 -> To deal with gravity logic when mario jumps, that was confusing to implement hence it helped
 https://www.pygame.org/docs/ Pygame documentation to understand the most of the methods  
-https://supermarioplay.com/fullscreen supermario game for reference, it helped us see what we are working with and understand how to clone it better
+https://supermarioplay.com/fullscreen Supermario game for reference, it helped us see what we are working with and understand how to clone it better
 
 ---
 
@@ -85,9 +85,9 @@ Indicate what percentage of the project you have left to complete and how confid
   before the deadline.
 
 ```
-    *we feel somewhat confident about completing this project. we understand the basics, but some parts are still challenging. 
-    we believe we can finish it if we stay focused and work step by step.To improve my chances of finishing on time, I will break the project into small tasks,
-     work on it a little every day, test my code often, and ask for help when I get stuck.*
+    *We feel somewhat confident about completing this project. we understand the basics, but some parts are still challenging. 
+    we believe we can finish it if we stay focused and work step by step.To improve my chances of finishing on time, We will break the project into small tasks,
+    work on it a little every day, test my code often, and ask for help when I get stuck.*
 ```
 
 ---
@@ -99,9 +99,14 @@ Indicate what percentage of the project you have left to complete and how confid
 In a paragraph, explain how to use your program. Assume the user is starting just after they hit the "Run" button 
 in PyCharm.
 ```
-After you hit “Run” in PyCharm, the game window opens and the gameplay starts right away. Use the left and right arrow keys to move Mario and press the space bar to jump across blocks and avoid enemies. 
-Keep moving forward through the level, collecting points and surviving obstacles. When you reach the end of the map, you will find a queen waiting for you to complete the level. 
-Close the window anytime to exit and rerun the program to start over.
+After hitting the “Run” button in PyCharm, the game window opens automatically and the program begins.
+You control Mario using the arrow keys: the left and right arrows move him across the world, and the up arrow makes him jump.
+As you move, the camera scrolls to follow Mario, revealing blocks, enemies, flowers, and eventually the princess at the end 
+of the level. Mario can land on top of blocks, hit them from below to break or collect coins, and defeat enemies by jumping
+on them. If he touches an enemy from the side, he loses a life and is pushed backward. Your score appears at the top of the
+screen along with your remaining lives. The goal is simple: reach the princess at the far right side of the map. If Mario 
+runs out of lives, a Game Over screen appears; if he reaches the princess, you’ll see a Win screen. You can close the game
+at any time by clicking the window’s X button.
 ```
 
 
@@ -139,7 +144,17 @@ Each partner should write three to four well-written paragraphs address the foll
 ```
 
 ```
- Partner 2: **Replace this with your reflection
+ Partner 2: *
+            
+  We chose this project because we both grew up on platformer games and wanted to try building one from scratch. 
+  The final result isn’t exactly what we first planned, but it’s close enough that we’re proud of it. We got movement,
+  enemies, blocks, and scrolling working, even though things like collision and physics took way longer than we expected.
+  The whole process taught us a lot about organizing code, debugging, and actually planning before jumping in.
+  The hardest part was definitely getting collisions to feel right one tiny mistake broke everything. If we did this again,
+  we’d set up cleaner structure from the start and test things earlier. Working together went well overall; we communicated,
+  helped each other when things got frustrating, and split the work in a way that made sense. The only challenge was staying
+  consistent, but once we found our rhythm, the project moved smoothly.
+ *
 ```
 
 ---
